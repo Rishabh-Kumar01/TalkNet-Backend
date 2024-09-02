@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 // TODO: Add image and pdf file sharing in the next version
-const chatMessageSchema = new Schema(
+const messageSchema = new Schema(
   {
     sender: {
       type: Schema.Types.ObjectId,
@@ -27,4 +27,4 @@ const chatMessageSchema = new Schema(
   { timestamps: true }
 );
 
-export const ChatMessage = mongoose.model("ChatMessage", chatMessageSchema);
+export const Message = mongoose.model("Message", messageSchema);

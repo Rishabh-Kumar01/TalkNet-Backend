@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import { User } from "../models/apps/auth/user.models.js";
 import { Chat } from "../models/apps/chat-app/chat.models.js";
-import { ChatMessage } from "../models/apps/chat-app/message.models.js";
+import { Message } from "../models/apps/chat-app/message.models.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { getRandomNumber } from "../utils/helpers.js";
@@ -84,7 +84,7 @@ const seedGroupChats = async () => {
 
 const seedChatApp = asyncHandler(async (req, res) => {
   await Chat.deleteMany({});
-  await ChatMessage.deleteMany({});
+  await Message.deleteMany({});
   await seedOneOnOneChats();
   await seedGroupChats();
 

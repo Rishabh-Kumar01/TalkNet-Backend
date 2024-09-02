@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { ChatEventEnum } from "../../../constants.js";
 import { User } from "../../../models/apps/auth/user.models.js";
 import { Chat } from "../../../models/apps/chat-app/chat.models.js";
-import { ChatMessage } from "../../../models/apps/chat-app/message.models.js";
+import { Message } from "../../../models/apps/chat-app/message.models.js";
 import { emitSocketEvent } from "../../../socket/index.js";
 import { ApiError } from "../../../utils/ApiError.js";
 import { ApiResponse } from "../../../utils/ApiResponse.js";
@@ -85,7 +85,7 @@ const chatCommonAggregation = () => {
  */
 const deleteCascadeChatMessages = async (chatId) => {
   // fetch the messages associated with the chat to remove
-  const messages = await ChatMessage.find({
+  const messages = await Message.find({
     chat: new mongoose.Types.ObjectId(chatId),
   });
 
@@ -104,7 +104,7 @@ const deleteCascadeChatMessages = async (chatId) => {
   });
 
   // delete all the messages
-  await ChatMessage.deleteMany({
+  await Message.deleteMany({
     chat: new mongoose.Types.ObjectId(chatId),
   });
 };
